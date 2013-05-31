@@ -1,5 +1,4 @@
 #!/bin/bash
-http://download.jetbrains.com/webide/PhpStorm-6.0.2.tar.gz
 clear
 echo "        .  .::  PhpStorm  ::.  .         "
 echo ""
@@ -8,9 +7,11 @@ if ! [ -f ~/net-home/PhpStorm-* ]
 then
 	echo "tar.gz downloading"
 	cd ~/net-home/
-	lien=$(lynx -dump -listonly http://www.jetbrains.com/phpstorm/download/download_thanks.jsp?os=linux | grep http://download.jetbrains.com/webide)
+	url=http://www.jetbrains.com/phpstorm/download/download_thanks.jsp?os=linux
+	search=http://download.jetbrains.com/webide
+	lien=$(lynx -dump -listonly $url | grep $search)
 	wget ${lien:6}
-	#wget http://download.jetbrains.com/webide/PhpStorm-6.0.2.tar.gz
+
 	if [ $? != 0 ] 
 	then
 		echo "Download error"
